@@ -16,7 +16,7 @@ public class DisketteCollisionDetector : MonoBehaviour
         
     }
 
-    void onTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other) {
         Debug.Log("Entered !");
     }
 }
