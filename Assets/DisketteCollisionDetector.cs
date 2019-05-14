@@ -21,6 +21,9 @@ public class DisketteCollisionDetector : MonoBehaviour
         if (other.name == "Diskette")
         {
             Destroy(other.gameObject);
+            GameObject console = GameObject.Find("ConsoleText");
+            TextMesh tm = console.GetComponent<TextMesh>();
+            tm.text = "Booting system...\nuser@host:~$";
         }
     }
 }

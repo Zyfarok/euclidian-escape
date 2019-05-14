@@ -2162,7 +2162,7 @@ GameObject:
   - component: {fileID: 1674660141}
   - component: {fileID: 1674660140}
   m_Layer: 0
-  m_Name: New Text
+  m_Name: ConsoleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2190,7 +2190,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674660138}
-  m_Text: user@host:~$
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
