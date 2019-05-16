@@ -25,6 +25,8 @@ public class DisketteCollisionDetector : MonoBehaviour
             Debug.Log(console);
             TMPro.TextMeshPro tm = console.GetComponent<TMPro.TextMeshPro>();
             tm.text = "Booting system...\nuser@host:~$";
+            GameObject blinker = GameObject.Find("Blinker");
+            blinker.GetComponent<Blink>().StartBlink();
         }
     }
 }
