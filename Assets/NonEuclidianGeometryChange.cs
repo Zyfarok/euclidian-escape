@@ -9,11 +9,11 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         None = -1, NE, NW, SW, SE
     }
 
-    
+
     GameObject engineRoom = null;
     GameObject frontWall = null;
 
-    bool isEnabled = true;
+    bool isEnabled = false;
     Orientation lastOrientation = Orientation.None;
 
     // Start is called before the first frame update
@@ -29,15 +29,16 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     {
         float angle = VRTK.VRTK_DeviceFinder.HeadsetTransform().rotation.eulerAngles.y;
         Orientation current = GetOrientation(angle);
-        Debug.Log("Update called: " + angle + "° and " + current);
-        if(!isEnabled || lastOrientation == Orientation.None) {
+        if (!isEnabled || lastOrientation == Orientation.None)
+        {
             lastOrientation = current;
             return;
         }
 
-        if((current == Orientation.SW && lastOrientation == Orientation.SE) ||
+        if ((current == Orientation.SW && lastOrientation == Orientation.SE) ||
             (current == Orientation.SE && lastOrientation == Orientation.SW)
-        ) {
+        )
+        {
             SwapFront();
         }
         // Other swap can come later
@@ -45,31 +46,43 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         lastOrientation = current;
     }
 
-    private Orientation GetOrientation(float angle) {
+    private Orientation GetOrientation(float angle)
+    {
         int i = (int)Mathf.Floor(angle / 90) % 4;
-        if(i < 0) {
+        if (i < 0)
+        {
             i += 4;
         }
 
-        switch(i) {
-        case 0:
-            return Orientation.NW;
-        case 1:
-            return Orientation.SW;
-        case 2:
-            return Orientation.SE;
-        default:
-            return Orientation.NE;
+        switch (i)
+        {
+            case 0:
+                return Orientation.NW;
+            case 1:
+                return Orientation.SW;
+            case 2:
+                return Orientation.SE;
+            default:
+                return Orientation.NE;
         }
     }
 
-    private void SwapFront() {
-        if(engineRoom.activeSelf) {
+    private void SwapFront()
+    {
+        if (engineRoom.activeSelf)
+        {
             engineRoom.SetActive(false);
             frontWall.SetActive(true);
-        } else {
+        }
+        else
+        {
             engineRoom.SetActive(true);
             frontWall.SetActive(false);
         }
+    }
+
+    public void SetEnabled(bool value)
+    {
+        isEnabled = value;
     }
 }

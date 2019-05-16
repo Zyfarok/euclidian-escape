@@ -22,9 +22,8 @@ public class DisketteCollisionDetector : MonoBehaviour
         {
             Destroy(other.gameObject);
             GameObject console = GameObject.Find("ConsoleText");
-            Debug.Log(console);
             TMPro.TextMeshPro tm = console.GetComponent<TMPro.TextMeshPro>();
-            tm.text = "Booting system...\nuser@host:~$";
+            tm.text += "Booting system...\nuser@host:~$\nSpacecraft is damaged and will explode!\nInput maintenance password...";
             GameObject blinker = GameObject.Find("Blinker");
             blinker.GetComponent<Blink>().StartBlink();
         }
