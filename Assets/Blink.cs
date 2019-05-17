@@ -11,7 +11,7 @@ public class Blink : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        l = GetComponent<Light>();   
+        l = GetComponent<Light>();
     }
 
     // Update is called once per frame
@@ -20,7 +20,8 @@ public class Blink : MonoBehaviour
 
     }
 
-    public void StartBlink() {
+    public void StartBlink()
+    {
         BlinkCode();
     }
 

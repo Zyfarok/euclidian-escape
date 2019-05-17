@@ -12,28 +12,33 @@ public class GunLazer : MonoBehaviour
     public float range = 100.0f;
     LineRenderer line;
     public Material lineMaterial;
-    
+
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         line.GetComponent<Renderer>().material = lineMaterial;
         line.startWidth = 0.05f;
         line.endWidth = 0.05f;
+        line.enabled = false;
+        GameObject gun = GameObject.Find("BitGun");
+        Debug.Log(gun);
+        gun.GetComponent<VRTK.VRTK_InteractableObject>().InteractableObjectUsed += (sender, e) => line.enabled = true;
+        gun.GetComponent<VRTK.VRTK_InteractableObject>().InteractableObjectUnused += (sender, e) => line.enabled = false;
     }
 
     // Update is called once per frame
-    void Update() {
-        Ray ray =  new Ray(gunTip.position, gunTip.forward);
-        if(Physics.Raycast(ray, out hit, range)) {
-            if(true) {
-                line.enabled = true;
+    void Update()
+    {
+        if (line.enabled)
+        {
+            Ray ray = new Ray(gunTip.position, gunTip.forward);
+            if (Physics.Raycast(ray, out hit, range))
+            {
                 line.SetPosition(0, transform.position);
-                line.SetPosition(1, hit.point + hit.normal);
+                line.SetPosition(1, hit.point);
             }
-            else {
-                line.enabled = false;
-            }
-        } 
+        }
     }
 }
