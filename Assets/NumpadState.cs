@@ -6,6 +6,8 @@ public class NumpadState : MonoBehaviour
 {
     string code = "4215";
     string current = "0000";
+    bool isEnabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +39,17 @@ public class NumpadState : MonoBehaviour
             tm.text += "\nCorrect password! Maintenance room enabled.";
         }
     }
-    public void KeyPress(int number)
+    void KeyPress(int number)
     {
-        current = current.Substring(1, 3) + number;
-        checkCode();
+        if (isEnabled)
+        {
+            current = current.Substring(1, 3) + number;
+            checkCode();
+        }
+    }
+
+    public void SetEnabled(bool value)
+    {
+        isEnabled = value;
     }
 }

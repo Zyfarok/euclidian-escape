@@ -26,6 +26,8 @@ public class DisketteCollisionDetector : MonoBehaviour
             tm.text += "Booting system...\nuser@host:~$\nSpacecraft is damaged and will explode!\nInput maintenance password...";
             GameObject blinker = GameObject.Find("Blinker");
             blinker.GetComponent<Blink>().StartBlink();
+            GameObject numpad = GameObject.Find("Numpad");
+            numpad.GetComponent<NumpadState>().SetEnabled(true);
         }
     }
 }
