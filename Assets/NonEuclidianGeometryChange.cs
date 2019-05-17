@@ -13,7 +13,7 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     GameObject engineRoom = null;
     GameObject frontWall = null;
 
-    bool isEnabled = false;
+    public bool isEnabled = false;
     Orientation lastOrientation = Orientation.None;
 
     // Start is called before the first frame update
@@ -35,8 +35,8 @@ public class NonEuclidianGeometryChange : MonoBehaviour
             return;
         }
 
-        if ((current == Orientation.SW && lastOrientation == Orientation.SE) ||
-            (current == Orientation.SE && lastOrientation == Orientation.SW)
+        if ((current == Orientation.NW && lastOrientation == Orientation.NE) ||
+            (current == Orientation.NE && lastOrientation == Orientation.NW)
         )
         {
             SwapFront();
