@@ -51,6 +51,12 @@ Unblocking the gears enables the final escape. The player must first return to t
 
 ## Extras
 
+These objects are not necessary to solve the enigmas, but they add some VR interactions and are used to confuse the player with unuseful hints.
+
 ### Portal radio
 
+This radio is toggled when the player touches it and it plays the Portal radio tune.
+
 ### Flashlight
+
+This item can be grabbed and the light can be toggled with the "use" button of the controller.
