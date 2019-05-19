@@ -24,7 +24,7 @@ public class GunLazer : MonoBehaviour
         line.enabled = false;
         GameObject gun = GameObject.Find("BitGun");
         Debug.Log(gun);
-        gun.GetComponent<VRTK.VRTK_InteractableObject>().InteractableObjectUsed += (sender, e) => line.enabled = true;
+        gun.GetComponent<VRTK.VRTK_InteractableObject>().InteractableObjectUsed += (sender, e) => {line.enabled = true;Update();};
         gun.GetComponent<VRTK.VRTK_InteractableObject>().InteractableObjectUnused += (sender, e) => line.enabled = false;
     }
 
