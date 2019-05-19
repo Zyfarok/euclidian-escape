@@ -654,12 +654,12 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
-    Collab: 0
+    Collab: 1
     ErrorHub: 0
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
-    UNet: 0
+    UNet: 1
     Unity_Ads: 0
   luminIcon:
     m_Name: 
@@ -680,10 +680,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 66f48b89-eae1-4400-b29c-681dd50a036b
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: The Euclidian Escape
+  organizationId: burgelin-clement
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

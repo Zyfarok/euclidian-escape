@@ -16,6 +16,9 @@ public class GunLazer : MonoBehaviour
     public MonoBehaviour gear1Script;
     public MonoBehaviour gear2Script;
 
+    public NonEuclidianGeometryChange nonEuclidianScript;
+    public TMPro.TextMeshPro consoleText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,8 @@ public class GunLazer : MonoBehaviour
                     hit.collider.gameObject.SetActive(false);
                     gear1Script.enabled = true;
                     gear2Script.enabled = true;
+                    nonEuclidianScript.EnableExit();
+                    consoleText.text += "\nGo back to the cockpit.";
                 }
                 line.SetPosition(0, gunTip.position);
                 line.SetPosition(1, hit.point);
