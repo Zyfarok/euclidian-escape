@@ -11,7 +11,7 @@ public class NonEuclidianGeometryChange : MonoBehaviour
 
 
     GameObject engineRoom = null;
-    GameObject frontWall = null;
+    //GameObject frontWall = null;
 
     public bool isEnabled = false;
     Orientation lastOrientation = Orientation.None;
@@ -20,7 +20,7 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     void Start()
     {
         engineRoom = GameObject.Find("EngineRoom");
-        frontWall = GameObject.Find("CockpitFrontWall");
+        //frontWall = GameObject.Find("CockpitFrontWall");
         engineRoom.SetActive(false);
     }
 
@@ -35,8 +35,8 @@ public class NonEuclidianGeometryChange : MonoBehaviour
             return;
         }
 
-        if ((current == Orientation.NW && lastOrientation == Orientation.NE) ||
-            (current == Orientation.NE && lastOrientation == Orientation.NW)
+        if ((current == Orientation.SW && lastOrientation == Orientation.SE) ||
+            (current == Orientation.SE && lastOrientation == Orientation.SW)
         )
         {
             SwapFront();
@@ -72,12 +72,12 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         if (engineRoom.activeSelf)
         {
             engineRoom.SetActive(false);
-            frontWall.SetActive(true);
+            //frontWall.SetActive(true);
         }
         else
         {
             engineRoom.SetActive(true);
-            frontWall.SetActive(false);
+            //frontWall.SetActive(false);
         }
     }
 

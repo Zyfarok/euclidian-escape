@@ -13,6 +13,9 @@ public class GunLazer : MonoBehaviour
     LineRenderer line;
     public Material lineMaterial;
 
+    public MonoBehaviour gear1Script;
+    public MonoBehaviour gear2Script;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +39,16 @@ public class GunLazer : MonoBehaviour
             Ray ray = new Ray(gunTip.position, gunTip.forward);
             if (Physics.Raycast(ray, out hit, range))
             {
-                line.SetPosition(0, transform.position);
+                if(hit.collider.gameObject.name.Equals("Blocker")) {
+                    hit.collider.gameObject.SetActive(false);
+                    gear1Script.enabled = true;
+                    gear2Script.enabled = true;
+                }
+                line.SetPosition(0, gunTip.position);
                 line.SetPosition(1, hit.point);
+            } else {
+                line.SetPosition(0, gunTip.position);
+                line.SetPosition(1, gunTip.position + 1000*gunTip.forward);
             }
         }
     }
