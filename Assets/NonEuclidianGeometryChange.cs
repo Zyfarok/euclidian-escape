@@ -9,17 +9,17 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         None = -1, NE, NW, SW, SE
     }
 
-
-    GameObject engineRoom = null;
-    //GameObject frontWall = null;
-
     public bool isEnabled = false;
+
+    public GameObject engineRoom;
+    //GameObject frontWall = null;
+    public TMPro.TextMeshPro panel;
+    
     Orientation lastOrientation = Orientation.None;
 
     // Start is called before the first frame update
     void Start()
     {
-        engineRoom = GameObject.Find("EngineRoom");
         //frontWall = GameObject.Find("CockpitFrontWall");
         engineRoom.SetActive(false);
     }
@@ -40,6 +40,15 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         )
         {
             SwapFront();
+        } else if((current == Orientation.NW && lastOrientation == Orientation.NE) ||
+                  (current == Orientation.NE && lastOrientation == Orientation.NW)
+        ) {
+            if((current == Orientation.NE) != engineRoom.activeSelf) {
+                panel.text = "EngineRoom >\n< Cockpit";
+            } else {
+                panel.text = "< EngineRoom\nCockpit >";
+            }
+
         }
         // Other swap can come later
 
@@ -57,13 +66,13 @@ public class NonEuclidianGeometryChange : MonoBehaviour
         switch (i)
         {
             case 0:
-                return Orientation.NW;
-            case 1:
-                return Orientation.SW;
-            case 2:
-                return Orientation.SE;
-            default:
                 return Orientation.NE;
+            case 1:
+                return Orientation.SE;
+            case 2:
+                return Orientation.SW;
+            default:
+                return Orientation.NW;
         }
     }
 
@@ -84,5 +93,12 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     public void SetEnabled(bool value)
     {
         isEnabled = value;
+        float angle = VRTK.VRTK_DeviceFinder.HeadsetTransform().rotation.eulerAngles.y;
+        Orientation current = GetOrientation(angle);
+        if(current == Orientation.NE || current == Orientation.SE) {
+            panel.text = "EngineRoom >\n< Cockpit";
+        } else {
+            panel.text = "< EngineRoom\nCockpit >";
+        }
     }
 }
