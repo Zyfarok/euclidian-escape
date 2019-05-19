@@ -26,6 +26,9 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     public TMPro.TextMeshPro console;
 
     public GameObject exitDoor;
+
+    public GameObject env;
+    public MonoBehaviour EndScript;
     
     Orientation lastOrientation = Orientation.None;
 
@@ -39,8 +42,13 @@ public class NonEuclidianGeometryChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(end)
+        if(end) {
+            if(VRTK.VRTK_DeviceFinder.HeadsetTransform().position.z < -1.0f) {
+                env.transform.Translate(new Vector3(0,0,0.03f));
+                EndScript.enabled = true;
+            }
             return;
+        }
         
         float angle = VRTK.VRTK_DeviceFinder.HeadsetTransform().rotation.eulerAngles.y;
 
